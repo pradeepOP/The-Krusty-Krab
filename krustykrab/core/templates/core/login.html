@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="signup" class="relative mb-32 ">
+    <div class="container ">
+        <h2 class="second-title text-center text-color-secondary mb-5">Log In</h2>
+
+        <form action="." method="POST" class=" flex flex-col gap-5 md:w-1/2 mx-auto ">
+            {% csrf_token %}
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base"> Username</label>
+                <input type="text" name="username" class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base"> Password</label>
+                <input type="password" name="password" class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="mb-5 p-4 rounded-2xl bg-red-500 text-white">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <button class="btn-primary w-1/4 ">Login</button>
+            <p class="text-color-secondary">Don't have an account? <a href="{% url 'signup' %} "
+                    class=" font-semibold hover:border-b-[2px] hover:border-color-secondary-light">SignUp</a></p>
+        </form>
+    </div>
+
+</section>
+
+
+{% endblock %}

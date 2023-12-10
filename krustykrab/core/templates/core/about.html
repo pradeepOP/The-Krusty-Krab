@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<section id="about" class="relative ">
+    <div class=" bg-color-primary-light p-8 container flex flex-col gap-10 md:flex-row ">
+        <div class="flex-1 -mt-10">
+            <img src="{% static 'img/about.png' %}" alt="" class="w-96 md:w-full">
+        </div>
+        <div class="flex-1">
+            <h2 class="second-title">Experience the artistry of taste in every plate, crafted with passion.</h2>
+            <div class="separator"></div>
+            <p class="paragraph leading-5 text-justify">Welcome to <span class="text-color-secondary">KrustyKrab</span>,
+                where culinary artistry meets
+                exceptional taste.
+                Discover a menu curated with care, offering a fusion of flavors that promise a memorable dining
+                experience. Join us and indulge in a journey of delectable creations, served in an ambiance crafted for
+                moments worth savoring.</p>
+
+            <ul class="grid grid-cols-2 py-5 space-y-1">
+                <li class="text-sm text-paragraphColor "> <i class="fa-solid fa-check text-color-secondary"></i>
+                    Health protocol</li>
+                <li class="text-sm text-paragraphColor "> <i class="fa-solid fa-check text-color-secondary"></i>
+                    Affordable</li>
+                <li class="text-sm text-paragraphColor "> <i class="fa-solid fa-check text-color-secondary"></i>
+                    Chef's Expertise</li>
+                <li class="text-sm text-paragraphColor "> <i class="fa-solid fa-check text-color-secondary"></i>
+                    Fresh and Organic</li>
+            </ul>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'menu' %}" class="btn-primary mt-4  ">Our Menu</a>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

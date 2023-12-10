@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<section class="">
+    <div class="container flex flex-wrap items-start  p-6  xl:px-0">
+        <div class="products w-full lg:w-3/4 lg:pr-10">
+            {% for item in cart %}
+            {% include 'cart/partials/cart_item.html' %}
+            {% endfor %}
+        </div>
+
+
+        <div class="summary w-1/2  lg:w-1/4 p-5 bg-color-primary-light rounded-xl mt-4 lg:mt-10">
+            <h2 class="card-title text-center">Summary</h2>
+            <div class="card-separator  mx-auto"></div>
+
+            <div class="mb-6 mt-5 flex justify-between">
+                <span class="font-semibold text-color-secondary-light">Total</span>
+                <span hx-get="{% url 'hx_cart_total' %}" hx-trigger="update-menu-cart from:body" hx-swap="innerHTML">
+                    {% include 'cart/partials/cart_total.html' %}
+                </span>
+            </div>
+            <a href="{% url 'checkout' %}" class="btn-primary inline-block my-1">Checkout</a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

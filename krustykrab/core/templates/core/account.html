@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<section id="account">
+    <div class=" p-8 container ">
+        <h2 class="second-title text-center">My account</h2>
+        <div class="separator mx-auto"></div>
+
+        <div class="mb-6 bg-color-primary-light p-6 rounded-lg lg:flex lg:justify-between lg:items-center">
+            <p class="text-color-secondary text-lg tracking-wider"> <strong>Name:
+                </strong>{{request.user.get_full_name}}</p>
+            <p class="text-color-secondary text-lg tracking-wider"> <strong>Username: </strong>{{request.user.username}}
+            </p>
+            <p class="text-color-secondary text-lg tracking-wider"> <strong>email: </strong>{{request.user.email}}
+            </p>
+            <a href="{% url 'edit-account' %}" class="btn-primary inline-block mt-2 lg:mt-0">Edit</a>
+        </div>
+
+        <hr class="border-color-secondary">
+        <h2 class=" third-title mt-6">Orders</h2>
+        <div class="separator"></div>
+        {% for order in request.user.orders.all %}
+        <div class="w-full mb-6 p-6 flex flex-wrap bg-color-primary-light rounded-lg ">
+            <div class="mb-6 flex justify-between">
+                <p class="text-lg text-color-secondary">Order: {{order.id}}</p>
+            </div>
+            <div class="mb-6 w-full ">
+                {% for item in order.items.all %}
+                <div class="product mb-12 flex pr-6 items-center">
+                    <div class="w-1/4">
+                        <img src="{{item.menuItem.featured_image.url}}" alt="food image"
+                            class="w-full lg:w-1/2 hover:scale-110 ease-linear duration-200 ">
+                    </div>
+                    <div class="w-3/4 pl-6">
+                        <div class="flex justify-between">
+                            <p class="text-lg">{{item.menuItem.name}}</p>
+                            <p class="mb-6 pt-1 text-lg">${{item.price}}</p>
+                        </div>
+                        <div class=""> Quantity: {{item.quantity}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div>
+                <p class="text-lg text-color-secondary">Date: {{order.created_at}}</p>
+                <p class="text-lg text-color-secondary">Total:</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    </div>
+</section>
+{% endblock %}

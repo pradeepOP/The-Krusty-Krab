@@ -1,0 +1,9 @@
+<a link="hLink" id="menu-cart-button" href="{% url 'cart' %}"
+    class="relative hover:text-color-secondary ease-in duration-200">
+    <i class="fa-solid fa-cart-shopping "></i>
+
+    {% if cart|length %}
+    <span
+        class="px-2 py-1  absolute -top-3 -right-4 bg-color-secondary-light text-color-primary-dark text-xs rounded-full ">{{cart|length}}</span>
+    {% endif %}
+</a>

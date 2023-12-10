@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="signup" class="relative ">
+    <div class="container ">
+        <h2 class="second-title text-center text-color-secondary mb-5">Sign Up</h2>
+
+        <form action="." method="POST" class=" flex flex-col gap-5 md:w-1/2 mx-auto ">
+            {% csrf_token %}
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base ">First name</label>
+                <input type="text" name="first_name" required class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base">Last name</label>
+                <input type="text" name="last_name" required class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base"> Username</label>
+                <input type="text" name="username" required class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base"> Email</label>
+                <input type="email" name="email" required class="w-full  bg-color-primary-light  rounded-lg">
+            </div>
+
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base"> Password</label>
+                <input type="password" name="password1" required class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+            <div class="space-y-1">
+                <label for="" class="text-color-secondary text-base"> Confirm Password</label>
+                <input type="password" name="password2" required class="w-full bg-color-primary-light  rounded-lg">
+            </div>
+
+            {% for error in form.password1.errors %}
+            <div class="mt-3 py-3 px-4 text-base font-sans tracking-wider rounded-lg bg-red-400 text-white">
+                {{error|escape}}
+            </div>
+            {% endfor %}
+
+            <button class="btn-primary w-1/3">Submit</button>
+            <p class="text-color-secondary">Already have an account? <a href="{% url 'login' %}"
+                    class=" font-semibold hover:border-b-[2px] hover:border-color-secondary-light">Login</a></p>
+
+        </form>
+    </div>
+
+</section>
+
+
+{% endblock %}

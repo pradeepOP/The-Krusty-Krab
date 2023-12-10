@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<section id="menu">
+    <div class="container">
+        <div class="max-w-md md:max-w-2xl mx-auto">
+            <h1 class="second-title text-center">Our Menu</h1>
+            <div class="separator mx-auto"></div>
+            <p class="paragraph text-center">Discover a mosaic of flavors and experiences on our menu, each dish a
+                masterpiece waiting to be savored.</p>
+
+            <div class="tabs-wrap">
+                <div class=" category flex flex-wrap justify-center gap-2 py-10">
+                    <a href="{% url 'menu' %}" class="btn bg-color-primary-light">All</a>
+
+                    {% for category in categories %}
+                    <a href="{% url 'menu' %}?q={{category.name}}"
+                        class="btn bg-color-primary-light ">{{category.name}}</a>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- card -->
+
+        <div class="container grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+            {% for item in menus %}
+            <div class="w-2/3 relative md:w-full mx-auto bg-color-primary-light rounded-xl p-4">
+                <div class="grid place-items-center  ease-linear duration-200 ">
+                    <img src="{{item.featured_image.url}}" alt="food image"
+                        class="w-full hover:scale-110 ease-linear duration-200 ">
+                </div>
+                <div class="pt-3 ">
+                    <div class="mb-1">
+                        <h4 class="card-title">{{item.name}}</h4>
+                        <p class="paragraph">{{item.description}}</p>
+                    </div>
+                    <p class=" text-lg text-color-secondary mb-4">${{item.price}}</p>
+                </div>
+                {% if request.user.is_authenticated %}
+                <a href="#" class="btn-ghost absolute bottom-2 right-2 " hx-get="{% url 'add-to-cart' item.id %}"
+                    hx-target="#menu-cart-button" hx-swap="outerHTML">Order</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% if item  %}
+<div class=" product items-center mb-6 flex p-4 pr-6 rounded-lg bg-color-primary-light "
+    id="cart-item-{{item.menuItem.id}}">
+    <div class="w-1/4 ">
+        <img src="{{item.menuItem.featured_image.url}}" alt="food image"
+            class="w-full hover:scale-110 ease-linear duration-200 ">
+    </div>
+    <div class="w-3/4 pl-6">
+        <div class="flex justify-between">
+            <h3 class="text-lg">{{item.menuItem.name}}</h3>
+            <span class="mb-6 pt-1 text-lg text-color-white">${{item.total_price}}</span>
+        </div>
+        <hr class="border-color-secondary">
+        <div class="quantity mt-6 flex items-center space-x-4">
+            <a class="px-3 py-2 rounded-sm text-white bg-color-primary-light-second "
+                hx-get="{% url 'update-cart' item.menuItem.id 'decrement' %}"
+                hx-target="#cart-item-{{item.menuItem.id}}" hx-swap="outerHTML">-
+            </a>
+            <span>{{item.quantity}}</span>
+            <a class="px-3 py-2 rounded-sm text-white bg-color-primary-light-second "
+                hx-get="{% url 'update-cart' item.menuItem.id 'increment' %}"
+                hx-target="#cart-item-{{item.menuItem.id}}" hx-swap="outerHTML">+
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endif %}

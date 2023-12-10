@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  section {
+    @apply pt-16 pb-4 md:pt-20;
+  }
+}
+.btn {
+  @apply inline-block text-sm py-3 px-8 capitalize text-center cursor-pointer rounded-md ease-linear duration-200;
+}
+
+.btn-primary {
+  @apply bg-color-secondary-light text-color-gray px-7 py-2 font-semibold rounded-md capitalize hover:opacity-80  ease-in duration-200;
+}
+.btn-ghost {
+  @apply px-7 py-2 border-[1px] rounded-2xl border-color-secondary text-color-secondary hover:bg-color-secondary hover:text-color-primary   ease-in-out duration-200;
+}
+
+.main-title {
+  @apply text-4xl font-bold uppercase lg:text-6xl;
+}
+.second-title {
+  @apply text-3xl font-bold capitalize lg:text-4xl;
+}
+.third-title {
+  @apply text-2xl font-bold capitalize lg:text-3xl;
+}
+.card-title {
+  @apply text-xl font-bold capitalize lg:text-2xl;
+}
+
+.separator {
+  @apply w-20 h-[2px] bg-color-secondary my-5;
+}
+.card-separator {
+  @apply w-20 h-[2px] bg-color-secondary my-2;
+}
+.paragraph {
+  @apply text-color-white text-base leading-relaxed;
+}
+
+.blob1 {
+  @apply w-80 h-80 bg-color-secondary absolute bottom-10 right-0 -z-10 blur-2xl opacity-30 overflow-hidden rounded-full;
+}
+.single-meal {
+  @apply w-full h-auto scale-110 opacity-90 hover:opacity-100 hover:scale-100 duration-500;
+}
+
+.category a:hover,
+.category a.active {
+  @apply bg-color-secondary text-color-gray;
+}

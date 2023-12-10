@@ -1,0 +1,106 @@
+<header id="header" class=" bg-color-primary fixed top-0 left-0 w-full z-50">
+    <nav class="container relative h-14 flex justify-between items-center">
+        <div class="text-color-white py-5 font-bold text-3xl">
+            <a href="{% url 'home' %}">
+                <span class="text-color-secondary">Krusty</span>Krab
+            </a>
+        </div>
+
+
+        <div class="text-lg">
+            <ul class="hidden lg:flex items-center space-x-6">
+                <li><a href="{% url 'home' %}" class="hover:text-color-secondary ease-in duration-200">Home</a></li>
+                <li><a href="{% url 'about' %}" class="hover:text-color-secondary ease-in duration-200">About Us</a>
+                </li>
+                <li><a href="{% url 'review' %}" class="hover:text-color-secondary ease-in duration-200">Review</a></li>
+                <li><a href="{% url 'account' %}" class="hover:text-color-secondary ease-in duration-200">Account</a>
+                </li>
+                <li><a href="{% url 'menu' %}" class="hover:text-color-secondary ease-in duration-200">Menu</a></li>
+                <li hx-get="{% url 'hx_menu_cart' %}" hx-trigger="update-menu-cart from:body " hx-swap="innerHTML">
+                    {% include 'cart/menu_cart.html' %}
+
+                </li>
+
+
+                {% if request.user.is_authenticated %}
+                <li><a href=" {% url 'logout' %}" class="btn-primary ">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="btn-primary ">Login</a></li>
+
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- mobile screen -->
+        <div id="hamburger" class="lg:hidden cursor-pointer z-50" hx-get="hx_menu_cart"
+            hx-target=".mobile#menu-cart-button " hx-swap="outerHTML">
+            <i class="fa-solid fa-bars text-lg"></i>
+        </div>
+        <div id="menu" class=" hidden bg-color-gray h-[100vh] absolute inset-0">
+            <ul class="h-full grid place-items-center ">
+                <li><a link="hLink" href="{% url 'home' %}"
+                        class="hover:text-color-secondary ease-in duration-200">Home</a>
+                </li>
+                <li><a link="hLink" href="{% url 'about' %}"
+                        class="hover:text-color-secondary ease-in duration-200">About
+                        Us</a></li>
+                <li><a link="hLink" href="{% url 'review' %}"
+                        class="hover:text-color-secondary ease-in duration-200">Review</a>
+                </li>
+                <li><a link="hLink" href="{% url 'account' %}"
+                        class="hover:text-color-secondary ease-in duration-200">Account</a>
+                </li>
+                <li><a link="hLink" href="{% url 'menu' %}"
+                        class="hover:text-color-secondary ease-in duration-200">Menu</a>
+                </li>
+                <li class="mobile" hx-get="{% url 'hx_menu_cart' %}" hx-trigger="update-menu-cart from:body "
+                    hx-swap="innerHTML">
+                    {% include 'cart/menu_cart.html' %}
+
+                </li>
+
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="btn-primary ">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="btn-primary ">Login</a></li>
+
+                {% endif %}
+            </ul>
+
+        </div>
+
+    </nav>
+</header>
+
+<script>
+    const hamburger = document.querySelector('#hamburger');
+    const menu = document.querySelector('#menu');
+    const hLink = document.querySelectorAll('#hLink')
+    const faSolid = document.querySelector('.fa-solid')
+
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle('hidden');
+        faSolid.classList.toggle('fa-xmark');
+    })
+
+    hLink.forEach(link => {
+        link.addEventListener("click", () => {
+            menu.classList.toggle('hidden');
+            faSolid.classList.toggle('fa-xmark');
+        })
+
+    })
+
+    // add border when scroll
+
+    const scrollHeader = () => {
+        const header = document.getElementById("header");
+
+        if (this.scrollY >= 50) {
+            header.classList.add("border-b", "border-color-secondary");
+        } else {
+            header.classList.remove("border-b", "border-color-secondary");
+        }
+    };
+    window.addEventListener("scroll", scrollHeader);
+</script>

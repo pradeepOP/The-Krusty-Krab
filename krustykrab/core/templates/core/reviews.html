@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="review" class="relative">
+    <h1 class="second-title text-center">Voices of Our Customers</h1>
+    <div class="separator mx-auto"></div>
+    <div class="container p-8 flex flex-col space-y-16">
+
+        {% for review in reviews %}
+        <figure class="">
+            <blockquote class="relative rounded-3xl bg-color-primary-dark py-12 pl-14 pr-8 ">
+                <p
+                    class=" mt-2 text-left text-2xl text-white before:absolute before:top-0 before:left-0 before:translate-x-2 before:translate-y-2 before:transform before:font-serif before:text-9xl before:text-white before:opacity-25 before:content-['\201C'] after:absolute after:-bottom-20 after:right-0 after:-translate-x-2 after:-translate-y-2 after:transform after:font-serif after:text-9xl after:text-white after:opacity-25 after:content-['\201D'] sm:text-3xl">
+                    {{review.body}}
+                </p>
+
+            </blockquote>
+            <figcaption class="mt-2 text-right italic text-color-secondary sm:text-2xl">
+                &#8212;{{review.user.first_name}} {{review.user.last_name}}
+
+            </figcaption>
+        </figure>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+        <div>
+            <h3 class="third-title">Share your experience</h3>
+            <div class="separator"></div>
+            <form action="." method="POST" class="">
+                {% csrf_token %}
+
+                <input type="text" name="body"
+                    class="w-full  h-16 bg-color-primary-light rounded-lg placeholder:text-color-secondary placeholder:text-lg md:h-20 tracking-wider "
+                    placeholder="Write your review..................">
+                <button class="btn-primary float-right mt-2 ">Post</button>
+            </form>
+
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

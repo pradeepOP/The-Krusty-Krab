@@ -1,0 +1,59 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krusty Krab</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% tailwind_css %}
+</head>
+
+<body class="bg-color-primary text-color-white tracking-wider">
+    {% include 'core/navbar.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+
+
+
+    <footer class="bg-color-primary-light text-lg mt-10 text-color-white  ">
+        <section class="container mx-auto flex flex-col py-5 sm:flex-row sm:justify-between">
+            <address>
+                <h2>Krusty Krab , Inc.</h2>
+                999 Bikini Bottom<br />
+                <!-- Fairfield, New Jersey 12345-5555<br /> -->
+                Email:
+                <a href="mailto:inquiries@acmerockets.com">Inquires@Krustykrab.com</a><br />
+                Phone: <a href="tel:+15555555555">(555) 555-5555</a>
+            </address>
+
+            <nav class="hidden flex-col text-lg gap-1 md:flex" aria-label="footer">
+                <a href="{% url 'home' %}" class="hover:text-color-secondary ease-in duration-200">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-color-secondary ease-in duration-200">About Us</a>
+                <a href="{% url 'review' %}" class="hover:text-color-secondary ease-in duration-200">Review</a>
+                <a href="{% url 'menu' %}" class="hover:text-color-secondary ease-in duration-200">Menu</a>
+            </nav>
+            <div class="flex flex-col sm:gap-2">
+                <p class="text-right">Copyright &copy; <span id="year">2023</span></p>
+                <p class="text-right">All Rights Reserved</p>
+            </div>
+
+        </section>
+
+    </footer>
+    <script src="https://unpkg.com/htmx.org@1.9.9"
+        integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

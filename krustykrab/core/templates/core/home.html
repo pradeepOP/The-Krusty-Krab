@@ -1,0 +1,135 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="home" class="relative mt-6">
+    <div class="blob1">
+    </div>
+    <div class="container flex flex-col items-center gap-10 md:flex-row">
+        <div class=" mx-auto md:basis-1/2 lg:basis-2/5  ">
+            <img src="{% static 'img/hero_img.png' %}" alt="" class="w-96 md:w-full  ">
+        </div>
+        <div class="text-center md:text-start md:basis-1/2 lg:basis-3/5">
+            <h1 class="main-title">FEEDING YOUR CRAVINGS, DELIGHTING YOUR SENSES</h1>
+            <div class="separator mx-auto md:mx-0"></div>
+            <p class="paragraph">Discover a world of flavours with ease at Krusty Krab. From browsing diverse menus to
+                hassle-free
+                ordering, indulge in the ultimate culinary experience.</p>
+            <div class="text-base flex items-center justify-center gap-4 py-10 md:justify-start  md:gap-20">
+                <div class="text-center">
+                    <i class="fa-solid fa-utensils text-color-secondary text-4xl"></i>
+                    <br>
+                    Delicious
+                </div>
+                <div class="text-center">
+                    <i class="fa-solid fa-droplet text-color-secondary text-4xl"></i>
+                    <br>
+                    Fresh
+                </div>
+                <div class="text-center">
+                    <i class="fa-brands fa-envira text-color-secondary text-4xl"></i>
+                    <br>
+                    Organic
+                </div>
+
+                <div class="text-center">
+                    <i class="fa-solid fa-truck text-color-secondary text-4xl"></i>
+                    <br>
+                    Fast delivery
+                </div>
+            </div>
+            <a href="{% url 'menu' %}" class="btn-primary ">I am hungry</a>
+        </div>
+    </div>
+
+</section>
+<section id="best-meals">
+    <div class="container">
+        <h2 class="second-title text-center">Our best meals</h2>
+        <div class="separator mx-auto"></div>
+
+        <div>
+            <ul class="w-2/3 mx-auto md:w-full grid md:grid-cols-4">
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_1.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_2.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_3.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_4.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_5.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_6.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_7.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="w-full overflow-hidden">
+                        <img src="{% static 'img/best_8.jpg' %}" alt="" class="single-meal">
+                    </figure>
+                </li>
+            </ul>
+            <button class="p-4 w-full md:pt-5">
+                <a href="{% url 'menu' %}" class="btn-primary">Show me more</a>
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="promo">
+    <div class="container flex flex-col gap-5 lg:gap-10 lg:flex-row">
+
+        <!-- card-1 -->
+        <div
+            class="bg-color-primary-light flex flex-col p-5 rounded-lg md:flex-row md:items-center lg:flex-row-reverse lg:flex-1">
+            <img src="{% static 'img/promo_1.png' %}" alt="" class="w-40 mx-auto md:mx-5">
+
+            <div class="space-y-2 pt-5">
+                <p class="text-sm text-color-secondary">Order eat repeat</p>
+                <h3 class="third-title">GET A 10% DISCOUNT ON PAYDAY WEEK</h3>
+                <p class="paragraph">Discover, order, and relish. Your next favorite dish is just a click away</p>
+                <a href="{% url 'menu' %}"
+                    class="text-sm text-color-secondary hover:border-b hover:border-color-secondary">Order
+                    now</a>
+            </div>
+        </div>
+        <div
+            class="bg-color-primary-light flex flex-col p-5 rounded-lg md:flex-row md:items-center lg:flex-row-reverse lg:flex-1">
+            <img src="{% static 'img/promo_2.png' %}" alt="" class="w-40 mx-auto md:mx-5">
+
+            <div class="space-y-2 pt-5">
+                <p class="text-sm text-color-secondary">Delicious Deals Await!</p>
+                <h3 class="third-title">GET A 15% DISCOUNT DURING WEEKEND</h3>
+                <p class="paragraph">Taste Sensations: Deals that Delight!</p>
+                <a href="{% url 'menu' %}"
+                    class="text-sm text-color-secondary  hover:border-b hover:border-color-secondary  ">Order
+                    now</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
